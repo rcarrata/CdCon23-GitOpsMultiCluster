@@ -1,10 +1,10 @@
 # cdCon and GitOpsCon 2023 - Managing GitOps deployments in multi-cluster production environments
 
-Repository for the cdCon & GitOpsCon 2023 about Managing GitOps deployments in multi-cluster production environments
+Repository for the [cdCon & GitOpsCon 2023](https://events.linuxfoundation.org/cdcon-gitopscon/) about Managing GitOps deployments in multi-cluster production environments.
 
 ## Abstract
 
-During this session we will demonstrate how to manage and scale productive ArgoCD deployments in a multi cluster environment easily and securely using GitOps patterns.
+During [this session](https://sched.co/1LAFy) we will demonstrate how to manage and scale productive ArgoCD deployments in a multi cluster environment easily and securely using GitOps patterns.
 
 We will present the deployment of applications across multiple Kubernetes clusters on various public and private clouds and explore the best practices for scaling and managing highly available, reliable and secure applications. We will also demonstrate how you can structure your Git repositories to share and scale within your teams and organization in order to deploy your cloud native deployments in an automatic and predictive way.
 
