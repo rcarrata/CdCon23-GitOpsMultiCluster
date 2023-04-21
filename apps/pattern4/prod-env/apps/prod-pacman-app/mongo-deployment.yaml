@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: mongo
+    app.kubernetes.io/name: pacman
+  name: mongo
+  namespace: pacman-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: mongo
+      app.kubernetes.io/name: pacman
+  template:
+    metadata:
+      labels:
+        name: mongo
+        app.kubernetes.io/name: pacman
+    spec:
+      containers:
+      - image: bitnami/mongodb:latest
+        name: mongo
+        ports:
+        - name: mongo
+          containerPort: 27017
+        volumeMounts:
+          - name: mongo-db
+            mountPath: /data/db
+      volumes:
+        - name: mongo-db
+          persistentVolumeClaim:
+            claimName: mongo-storage

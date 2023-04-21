@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: parksmap
+  name: parksmap
+  namespace: parksmap
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: parksmap
+    weight: 100

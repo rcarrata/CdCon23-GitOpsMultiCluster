@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: welcome-app
+    app.kubernetes.io/component: welcome-app
+    app.kubernetes.io/instance: welcome-app
+    app.kubernetes.io/name: welcome-app
+    app.kubernetes.io/part-of: welcome-app-app
+    app.openshift.io/runtime-version: latest
+  name: welcome-app
+  namespace: welcome-app
+spec:
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - name: 8443-tcp
+      protocol: TCP
+      port: 8443
+      targetPort: 8443
+  selector:
+    app: welcome-app
+    deployment: welcome-app

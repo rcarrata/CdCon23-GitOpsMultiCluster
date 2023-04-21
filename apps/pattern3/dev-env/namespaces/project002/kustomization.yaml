@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: project002
+
+bases:
+- ../baseline
+
+resources:
+- namespace.yaml
+- netpol-allow-ingress.yaml
+- netpol-allow-monitoring.yaml
+- rolebinding.yaml

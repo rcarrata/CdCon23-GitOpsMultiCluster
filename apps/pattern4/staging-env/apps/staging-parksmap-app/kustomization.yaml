@@ -1,0 +1,6 @@
+namespace: parksmap
+resources:
+  - parksmap-svc.yaml
+  - parksmap-deployment.yaml
+  #- parksmap-route.yaml
+  - parksmap-ns.yaml

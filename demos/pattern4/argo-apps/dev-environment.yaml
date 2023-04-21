@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: dev-env-appset
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/rcarrata/kcd23ams-gitops-patterns
+        revision: main
+        directories:
+          - path: apps/pattern4/dev-env/apps/*
+          - path: apps/pattern4/dev-env/namespaces/*
+  template:
+    metadata:
+      name: "{{path.basename}}"
+    spec:
+      project: dev-env-appset-project
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      source:
+        repoURL: https://github.com/rcarrata/kcd23ams-gitops-patterns
+        targetRevision: main
+        path: "{{path}}"
+      destination:
+        server: https://kubernetes.default.svc

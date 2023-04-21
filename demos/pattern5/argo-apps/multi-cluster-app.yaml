@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: welcome-app-appset
+  namespace: argocd
+spec:
+  generators:
+    - clusters: {}
+  template:
+    metadata:
+      name: "{{name}}-welcome-app"
+    spec:
+      project: welcome-app
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      source:
+        repoURL: https://github.com/rcarrata/kcd23ams-gitops-patterns
+        targetRevision: main
+        path: demos/pattern5/base/
+      destination:
+        server: "{{server}}"
+        namespace: welcome-app
+
+

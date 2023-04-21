@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: parksmap
+  name: parksmap
+  namespace: parksmap
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: parksmap
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: parksmap
+    spec:
+      containers:
+        - image: quay.io/openshiftroadshow/parksmap:latest
+          name: parksmap
+          env:
+            - name: COLOR
+              value: "blue"
+          resources: {}
+---
+
