@@ -5,8 +5,9 @@ metadata:
   namespace: argocd
 spec:
   destination:
+    name: cluster1
     namespace: todo
-    server: https://kubernetes.default.svc
+    # server: https://kubernetes.default.svc
   project: default
   source:
     path: apps/demo2/todo
