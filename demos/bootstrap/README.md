@@ -162,7 +162,4 @@ spec:
 EOF
 ```
 
-NOTE: for create an EKS cluster follow the [EKS guide](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html)
-
-
 

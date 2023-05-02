@@ -1,7 +1,6 @@
-# Pattern 1 - Kustomize to the rescue! 
+# Demo 1 - GitOps Application with Kustomize
 
-
-* Deploy a Kustomized Application:
+* Deploy a Kustomized Application using ArgoCD Application:
 
 ```
 kubectl apply -f bgdk-app.yaml
