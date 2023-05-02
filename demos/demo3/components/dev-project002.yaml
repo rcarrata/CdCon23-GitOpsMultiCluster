@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dev-env-httpbin-app
+  name: dev-env-project002
 spec:
   destination:
-    namespace: httpbin
+    namespace: default
     server: https://kubernetes.default.svc
   project: dev-env-project
   source:
-    path: apps/pattern3/dev-env/apps/httpbin-app
-    repoURL: https://github.com/rcarrata/kcd23ams-gitops-patterns
+    path: apps/demo3/dev-env/namespaces/project002
+    repoURL: https://github.com/rcarrata/CdCon23-GitOpsMultiCluster.git
     targetRevision: main
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+    # syncOptions:
+    #   - CreateNamespace=true

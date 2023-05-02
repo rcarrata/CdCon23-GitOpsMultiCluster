@@ -16,11 +16,9 @@ spec:
           prune: true
           selfHeal: true
       source:
-        repoURL: https://github.com/rcarrata/kcd23ams-gitops-patterns
+        repoURL: https://github.com/rcarrata/CdCon23-GitOpsMultiCluster.git
         targetRevision: main
-        path: demos/pattern5/base/
+        path: demos/demo5/base/
       destination:
         server: "{{server}}"
         namespace: welcome-app
-
-

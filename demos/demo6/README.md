@@ -1,4 +1,4 @@
-# Pattern 6 Demo - Promotion between GitOps environments
+# Demo 6 - Promotion between GitOps environments
 
 ## Folder Structure
 

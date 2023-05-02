@@ -1,4 +1,4 @@
-# Pattern 3 Demo - The GitOps Order Awakens!
+# Demo 3 - The GitOps Order Awakens!
 
 ## Deploy Dev Environment
 

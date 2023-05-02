@@ -6,11 +6,11 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/rcarrata/kcd23ams-gitops-patterns
+        repoURL: https://github.com/rcarrata/CdCon23-GitOpsMultiCluster.git
         revision: main
         directories:
-          - path: apps/pattern4/prod-env/apps/*
-          - path: apps/pattern4/prod-env/namespaces/*
+          - path: apps/demo4/prod-env/apps/*
+          - path: apps/demo4/prod-env/namespaces/*
   template:
     metadata:
       name: "{{path.basename}}"
@@ -21,7 +21,7 @@ spec:
           prune: true
           selfHeal: true
       source:
-        repoURL: https://github.com/rcarrata/kcd23ams-gitops-patterns
+        repoURL: https://github.com/rcarrata/CdCon23-GitOpsMultiCluster.git
         targetRevision: main
         path: "{{path}}"
       destination:

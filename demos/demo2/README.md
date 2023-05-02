@@ -1,4 +1,4 @@
-# Pattern 2 Demo - Controlling Order within GitOps deployments
+# Demo 2 - Controlling Order within GitOps deployments
 
 ## Deploy TODO app
 

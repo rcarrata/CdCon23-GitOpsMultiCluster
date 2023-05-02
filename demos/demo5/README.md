@@ -1,4 +1,4 @@
-# Pattern 5 Demo - GitOps Cluster Deployment Strategies
+# Demo 5 - GitOps Cluster Deployment Strategies
 
 ## Login in ArgoCD Server with argocd cli
 

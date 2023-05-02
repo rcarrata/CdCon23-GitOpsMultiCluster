@@ -8,8 +8,8 @@ spec:
     server: https://kubernetes.default.svc
   project: dev-env-project
   source:
-    path: apps/pattern3/dev-env/namespaces/project003
-    repoURL: https://github.com/rcarrata/kcd23ams-gitops-patterns
+    path: apps/demo3/dev-env/namespaces/project003
+    repoURL: https://github.com/rcarrata/CdCon23-GitOpsMultiCluster.git
     targetRevision: main
   syncPolicy:
     automated:
