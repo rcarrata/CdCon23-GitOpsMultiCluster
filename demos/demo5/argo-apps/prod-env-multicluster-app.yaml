@@ -1,11 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: welcome-app-appset
+  name: prod-env-multicluster-app
   namespace: argocd
 spec:
   generators:
-    - clusters: {}
+    - clusters:
+        selector:
+          matchLabels:
+            prod: true
   template:
     metadata:
       name: "{{name}}-welcome-app"

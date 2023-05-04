@@ -1,4 +1,27 @@
-# Demo 4 - GitOps Cluster Deployment Strategies
+# Demo 5 - GitOps Multi Cluster & Multi-Environment Strategies
+
+## Patch the Cluster Managed Secrets in ArgoCD  
+
+* Patch the AKS cluster as dev:
+
+```bash
+DEV=$(kubectl get secret -n argocd | grep azm | awk '{ print $1 }')
+kubectl patch secret -n argocd $DEV -p '{"metadata":{"labels":{"dev":"true"}}}'
+```
+
+* Patch the On-Prem k8s/OCP cluster as staging:
+
+```bash
+STAGING=$(kubectl get secret -n argocd | grep ocp4 | awk '{ print $1 }')
+kubectl patch secret $STAGING -n argocd -p '{"metadata":{"labels":{"staging":"true"}}}'
+```
+
+* Patch the ROSA/ARO clusters as prod:
+
+```bash
+PROD=$(kubectl get secret -n argocd | grep 'rosa\|aro' | awk '{ print $1 }')
+kubectl patch secret $PROD -n argocd -p '{"metadata":{"labels":{"prod":"true"}}}'
+```
 
 ## Add new Managed clusters into ArgoCD
 
@@ -16,39 +39,16 @@ https://api.k8s.xxxx.com:6443                         cluster1    1.21     Succe
 https://kubernetes.default.svc                             in-cluster  1.20     Successful
 ```
 
-<img align="center" width="650" src="docs/pic1.png">
-
-* https://argoproj.github.io/argo-cd/operator-manual/declarative-setup/#clusters
-
 ## Deploy Applications in Multi Cluster Environment
 
 ```
 kubectl apply -k deploy
 ```
 
-<img align="center" width="650" src="docs/pic2.png">
-
-## Application Sets with Multi Clustering Environments
-
-In Argo CD, managed clusters are stored within Secrets in the Argo CD namespace. The ApplicationSet
-controller uses those same Secrets to generate parameters to identify and target available clusters.
-
-For each cluster registered with Argo CD, the Cluster generator produces parameters based on the
-list of items found within the cluster secret.
-
-* [ApplicationSets documentation site](https://argocd-applicationset.readthedocs.io/en/stable/)
-
-* [Generator Cluster Documentation](https://argocd-applicationset.readthedocs.io/en/stable/Generators-Cluster/)
-
 ## Delete ApplicationSet for Apps
 
-For delete the multicluster environment:
+For delete all the multicluster & multienv environment:
 
 ```
-kubectl delete applicationset -n argo welcome-app-appset
+kubectl delete applicationset -n argocd --all
 ```
-
-## Links of interest
-
-* [Getting Started with Application Sets](https://cloud.redhat.com/blog/getting-started-with-applicationsets)
-* [GitOps Guide to the Galaxy (Ep 15): Introducing the App of Apps and ApplicationSets](https://www.youtube.com/watch?v=HqzUIJMYnfY&ab_channel=OpenShift)

@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: staging-env-multicluster-app
+  namespace: argocd
+spec:
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            staging: true
+  template:
+    metadata:
+      name: "{{name}}-welcome-app"
+    spec:
+      project: apps-project
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      source:
+        repoURL: https://github.com/rcarrata/CdCon23-GitOpsMultiCluster.git
+        targetRevision: main
+        path: apps/demo4/base/
+      destination:
+        server: "{{server}}"
+        namespace: welcome-app
