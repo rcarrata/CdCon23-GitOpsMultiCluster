@@ -5,10 +5,10 @@ metadata:
   namespace: argocd
 spec:
   generators:
-    - clusters:
-        selector:
-          matchLabels:
-            staging: true
+  - clusters:
+      selector:
+        matchLabels:
+          staging: "true"
   template:
     metadata:
       name: "{{name}}-welcome-app"
@@ -21,7 +21,7 @@ spec:
       source:
         repoURL: https://github.com/rcarrata/CdCon23-GitOpsMultiCluster.git
         targetRevision: main
-        path: apps/demo4/base/
+        path: apps/demo5/prod-env/overlays
       destination:
         server: "{{server}}"
         namespace: welcome-app

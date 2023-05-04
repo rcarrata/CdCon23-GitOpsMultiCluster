@@ -8,7 +8,7 @@ spec:
   - clusters:
       selector:
         matchLabels:
-          prod: true
+          prod: "true"
   template:
     metadata:
       name: "{{name}}-welcome-app"
@@ -21,7 +21,7 @@ spec:
       source:
         repoURL: https://github.com/rcarrata/CdCon23-GitOpsMultiCluster.git
         targetRevision: main
-        path: apps/demo4/base/
+        path: apps/demo4/demo5/prod-env/overlays
       destination:
         server: "{{server}}"
         namespace: welcome-app
