@@ -1,35 +1,54 @@
-# Demo 5 - Promotion between GitOps environments
+# Demo 4 - GitOps Cluster Deployment Strategies
 
-## Folder Structure
+## Add new Managed clusters into ArgoCD
 
-```md
-$ tree -L 2 apps/pattern6 
-apps/pattern6
-├── base
-│   ├── kustomization.yaml
-│   ├── welcome-app-deployment.yaml
-│   ├── welcome-app-namespace.yaml
-│   └── welcome-app-svc.yaml
-├── envs
-│   ├── dev-gpu
-│   ├── dev-nogpu
-│   ├── prod-eu
-│   ├── prod-us
-│   ├── staging-eu
-│   └── staging-us
-└── variants
-    ├── eu
-    └── us
+* Follow the [Managed Clusters into ArgoCD guide](../bootstrap/multicluster.md)
+
+NOTE: if you did this step in the demo2, skip the previous guide.
+
+* Check the existing ArgoCD Managed clusters available:
+
+```
+argocd cluster list
+SERVER                                                     NAME        VERSION  STATUS      MESSAGE
+https://api.cluster-35d4.35d4.xxxx.opentlc.com:6443  cluster2    1.20     Successful
+https://api.k8s.xxxx.com:6443                         cluster1    1.21     Successful
+https://kubernetes.default.svc                             in-cluster  1.20     Successful
 ```
 
-## Scenario 1 - Promote application version from Dev to Staging Environment in the US:
+<img align="center" width="650" src="docs/pic1.png">
 
-```md
-cp envs/dev-gpu/version.yaml envs/staging-us/version.yaml
+* https://argoproj.github.io/argo-cd/operator-manual/declarative-setup/#clusters
+
+## Deploy Applications in Multi Cluster Environment
+
+```
+kubectl apply -k deploy
 ```
 
-## Scenario 2 - Promote application version from Staging to Prod Environment in the US:
+<img align="center" width="650" src="docs/pic2.png">
 
-```md
-cp envs/staging-us/version.yaml envs/prod-us/version.yaml
+## Application Sets with Multi Clustering Environments
+
+In Argo CD, managed clusters are stored within Secrets in the Argo CD namespace. The ApplicationSet
+controller uses those same Secrets to generate parameters to identify and target available clusters.
+
+For each cluster registered with Argo CD, the Cluster generator produces parameters based on the
+list of items found within the cluster secret.
+
+* [ApplicationSets documentation site](https://argocd-applicationset.readthedocs.io/en/stable/)
+
+* [Generator Cluster Documentation](https://argocd-applicationset.readthedocs.io/en/stable/Generators-Cluster/)
+
+## Delete ApplicationSet for Apps
+
+For delete the multicluster environment:
+
 ```
+kubectl delete applicationset -n argo welcome-app-appset
+```
+
+## Links of interest
+
+* [Getting Started with Application Sets](https://cloud.redhat.com/blog/getting-started-with-applicationsets)
+* [GitOps Guide to the Galaxy (Ep 15): Introducing the App of Apps and ApplicationSets](https://www.youtube.com/watch?v=HqzUIJMYnfY&ab_channel=OpenShift)

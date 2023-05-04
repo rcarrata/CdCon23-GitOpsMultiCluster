@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: welcome-app-appset
+  namespace: argocd
+spec:
+  generators:
+    - clusters: {}
+  template:
+    metadata:
+      name: "{{name}}-welcome-app"
+    spec:
+      project: apps-project
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      source:
+        repoURL: https://github.com/rcarrata/CdCon23-GitOpsMultiCluster.git
+        targetRevision: main
+        path: apps/demo4/base/
+      destination:
+        server: "{{server}}"
+        namespace: welcome-app

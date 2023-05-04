@@ -5,7 +5,7 @@
 ```sh
 kubectl cluster-info --context kind-gitops
 argoPass=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)
-argocd login --insecure --grpc-web argocd.rober.lab --username admin --password $argoPass
+argocd login --insecure --grpc-web argocd.rcarrata.com --username admin --password $argoPass
 argocd cluster list
 ```
 
