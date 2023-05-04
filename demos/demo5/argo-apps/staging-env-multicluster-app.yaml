@@ -11,7 +11,7 @@ spec:
           staging: "true"
   template:
     metadata:
-      name: "{{name}}-welcome-app"
+      name: "{{name}}-staging-env-welcome-app"
     spec:
       project: apps-project
       syncPolicy:
