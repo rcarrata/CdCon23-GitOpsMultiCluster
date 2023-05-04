@@ -10,13 +10,14 @@ We will present the deployment of applications across multiple Kubernetes cluste
 
 After this technical session you will know more about the challenges and the benefits of using GitOps patterns to scale your productive applications in multi cluster scenarios and in a Cloud agnostic way.
 
-## Agenda
-
-* TBD
-
 ## Demos
 
-* TBD
+* [Demo 1 - GitOps Application with Kustomize](./demos/demo1/README.md)
+* [Demo 2 - Deploying GitOps Apps in Remote Clusters](./demos/demo2/README.md)
+* [Demo 3 - Managing GitOps Apps at scale](./demos/demo3/README.md)
+* [Demo 4 - GitOps Multi-Cluster Deployment Strategies](./demos/demo4/README.md)
+* [Demo 5 - Promotion between GitOps environments](./demos/demo5/README.md)
+* [Demo 6 - Promotion between GitOps environments](./demos/demo6/README.md)
 
 ## Audience
 
