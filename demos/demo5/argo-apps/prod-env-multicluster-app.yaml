@@ -11,7 +11,7 @@ spec:
           prod: "true"
   template:
     metadata:
-      name: "{{name}}-prod-env-welcome-app"
+      name: "{{name}}-prod-env-awesome-app"
     spec:
       project: apps-project
       syncPolicy:

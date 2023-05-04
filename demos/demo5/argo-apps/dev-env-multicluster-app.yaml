@@ -11,7 +11,7 @@ spec:
           dev: "true"
   template:
     metadata:
-      name: "{{name}}-dev-env-welcome-app"
+      name: "{{name}}-dev-env-awesome-app"
     spec:
       project: apps-project
       syncPolicy:
