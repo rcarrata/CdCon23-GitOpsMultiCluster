@@ -5,7 +5,13 @@ metadata:
   creationTimestamp: null
   labels:
     app: welcome-app
+    app.kubernetes.io/component: welcome-app
+    app.kubernetes.io/instance: welcome-app
+    app.kubernetes.io/name: welcome-app
+    app.kubernetes.io/part-of: welcome-app-app
+    app.openshift.io/runtime-version: latest
   name: welcome-app
+  namespace: welcome-app
 spec:
   ports:
     - name: 8080-tcp

@@ -1,9 +1,0 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-
-resources:
-- compute-quota.yaml
-- mem-limit-range.yaml
-- storage-class-quota.yaml
-- object-counts-quota.yaml
-- netpol-deny-other-ns.yaml

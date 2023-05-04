@@ -1,20 +1,28 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  name: dev-env-app-of-apps
+  name: dev-env-appset
   namespace: argocd
 spec:
-  destination:
-    namespace: argocd
-    server: https://kubernetes.default.svc
-  project: dev-env-project
-  source:
-    path: demos/demo3/components/
-    repoURL: https://github.com/rcarrata/CdCon23-GitOpsMultiCluster.git
-    targetRevision: main
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: false
-    syncOptions:
-      - CreateNamespace=true
+  generators:
+    - git:
+        repoURL: https://github.com/rcarrata/CdCon23-GitOpsMultiCluster.git
+        revision: main
+        directories:
+          - path: apps/demo3/dev-env/apps/*
+          - path: apps/demo3/dev-env/namespaces/*
+  template:
+    metadata:
+      name: "{{path.basename}}"
+    spec:
+      project: dev-env-appset-project
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      source:
+        repoURL: https://github.com/rcarrata/CdCon23-GitOpsMultiCluster.git
+        targetRevision: main
+        path: "{{path}}"
+      destination:
+        server: https://kubernetes.default.svc

@@ -9,8 +9,8 @@ spec:
         repoURL: https://github.com/rcarrata/CdCon23-GitOpsMultiCluster.git
         revision: main
         directories:
-          - path: apps/demo4/staging-env/apps/*
-          - path: apps/demo4/staging-env/namespaces/*
+          - path: apps/demo3/staging-env/apps/*
+          - path: apps/demo3/staging-env/namespaces/*
   template:
     metadata:
       name: "{{path.basename}}"
