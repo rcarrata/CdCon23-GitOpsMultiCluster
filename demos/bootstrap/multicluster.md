@@ -46,6 +46,29 @@ argocd cluster list
 
 ## Adding ROSA into ArgoCD
 
+* Create ROSA cluster
+
+```sh
+export VERSION=4.11.31 \
+       ROSA_CLUSTER_NAME=rosagitops \
+       AWS_ACCOUNT_ID=`aws sts get-caller-identity --query Account --output text` \
+       REGION=us-east-2 \
+       AWS_PAGER=""
+
+rosa create cluster -y --cluster-name ${ROSA_CLUSTER_NAME} \
+--region ${REGION} --version ${VERSION} \
+--machine-cidr $CIDR \
+--sts
+rosa create operator-roles --cluster rosagitops --mode auto --yes
+rosa create oidc-provider --cluster rosagitops
+```
+
+* Add cluster-admin user to the ROSA cluster:
+
+```sh
+rosa create admin --cluster=$ROSA_CLUSTER_NAME
+```
+
 * Create the kubeconfig:
 
 ```sh

@@ -1,5 +1,7 @@
 # Demo 3 - Managing GitOps Apps at scale
 
+Deploy Dev, Staging and Prod environments using ApplicationSets in the same collocated Kubernetes cluster (where the ArgoCD instance is deployed).  
+
 ## Deploy Dev + Staging + Prod Environments
 
 ```
@@ -23,10 +25,10 @@ You can read more about ApplicationSets from the [ApplicationSets documentation 
 
 ## Delete ApplicationSet for Apps
 
-Just delete the application set and the ArgoCD ApplicationSet contoller will do the magic!
+Just delete the application set and the ArgoCD ApplicationSet controller will do the magic!
 
 ```
-kubectl delete applicationset --all -n argocd
+kubectl demo -k deploy/
 ```
 
 ## Links of interest

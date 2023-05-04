@@ -1,4 +1,10 @@
-# Demo 2 - Controlling Order within GitOps deployments
+# Demo 2 - Deploying GitOps Apps in Remote Clusters
+
+This demo will deploy the TODO app in a remote cluster (cluster1), showing how you can use ArgoCD to deploy remote Apps.
+
+## Add new Managed clusters into ArgoCD
+
+* Follow the [Managed Clusters into ArgoCD guide](../bootstrap/multicluster.md)
 
 ## Deploy TODO app
 
@@ -10,11 +16,13 @@ NOTE: the app it's exposed in the /todo.html
 
 ## Delete TODO app (in cascade)
 
-* To delete all the objects generated use:
+* To delete all the objects generated patch first the ArgoCD app:
 
 ```
 kubectl patch app todo-app -n argocd -p '{"metadata": {"finalizers": ["resources-finalizer.argocd.argoproj.io"]}}' --type merge
 ```
+
+* Delete the ArgoCD app:
 
 ```
 kubectl delete app todo-app -n argocd

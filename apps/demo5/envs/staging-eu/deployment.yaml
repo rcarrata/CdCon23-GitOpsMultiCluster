@@ -13,3 +13,5 @@ spec:
               value: "staging-nogpu"
             - name: GPU_ENABLED
               value: "0"
+            - name: REGION
+              value: "eu"

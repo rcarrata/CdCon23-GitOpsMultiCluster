@@ -53,10 +53,34 @@ while :; do
 done
 
 function demo1() {
-  kubectl apply -f demo1/bgdk-app.yaml
-  kubectl patch app bgdk-app -n argocd \
-  -p '{"metadata": {"finalizers": ["resources-finalizer.argocd.argoproj.io"]}}' --type merge
+    kubectl apply -f demo1/bgdk-app.yaml
+    kubectl patch app bgdk-app -n argocd \
+    -p '{"metadata": {"finalizers": ["resources-finalizer.argocd.argoproj.io"]}}' --type merge
 }
+
+function demo2() {
+    kubectl apply -f demo2/todo-application.yaml
+    kubectl patch app todo-app -n argocd \ 
+    -p '{"metadata": {"finalizers": ["resources-finalizer.argocd.argoproj.io"]}}' --type merge
+}
+
+function demo3() {
+    kubectl apply -k demo3/deploy/
+}
+
+function demo1-delete() {
+    kubectl delete -f demo1/bgdk-app.yaml
+}
+
+function demo2-delete() {
+    kubectl delete -f demo2/todo-application.yaml
+}
+
+function demo3-delete() {
+    kubectl demo -k deploy/
+
+}
+
 
 ## MAIN
 case "$ARG_COMMAND" in
@@ -68,21 +92,21 @@ case "$ARG_COMMAND" in
         ;;
 
     demo2)
-        echo "Deploying Demo2 - GitOps Application with Kustomize"
+        echo "Deploying Demo2 - Controlling Order within GitOps deployments"
         demo2
         echo
         echo "Completed successfully!"
         ;;
 
     demo3)
-        echo "Deploying Demo3 - GitOps Application with Kustomize"
+        echo "Deploying Demo3 - Managing GitOps Apps at scale"
         demo3
         echo
         echo "Completed successfully!"
         ;;
 
     demo4)
-        echo "Deploying Demo4 - GitOps Application with Kustomize"
+        echo "Deploying Demo4 - GitOps Cluster Deployment Strategies"
         demo4
         echo
         echo "Completed successfully!"
@@ -104,7 +128,7 @@ case "$ARG_COMMAND" in
 
     demo1-delete)
         echo "Deleting Demo1"
-        demo1
+        demo1-delete
         echo
         echo "Completed successfully!"
         ;;
