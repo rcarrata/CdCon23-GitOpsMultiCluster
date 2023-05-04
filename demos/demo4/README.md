@@ -1,60 +1,12 @@
 # Demo 4 - GitOps Cluster Deployment Strategies
 
-## Login in ArgoCD Server with argocd cli
+## Add new Managed clusters into ArgoCD
 
-* Login with the admin user with the argocd cli
+* Follow the [Managed Clusters into ArgoCD guide](../bootstrap/multicluster.md)
 
-```
-curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
-chmod +x /usr/local/bin/argocd
+NOTE: if you did this step in the demo2, skip the previous guide.
 
-ARGOPASS=$(kubectl --namespace argocd get secret argocd-initial-admin-secret -o json | jq -r '.data.password' | base64 -d)
-
-argocd login $ARGOCD_URL --grpc-web --username=admin --password=$ARGOPASS
-```
-
-## Configuring the multi-clustering in ArgoCD
-
-* Login to the cluster1 and set up a kubeconfig for change the context rapidly:
-
-```
-touch /var/tmp/lab-kubeconfig
-export KUBECONFIG=/var/tmp/lab-kubeconfig
-
-kubectl login --insecure-skip-tls-verify=true --username=<admin_user> --password=<admin_password> https://api.<hub_cluster_name>.<base_domain>:6443
-
-kubectl config rename-context $(kubectl config current-context) cluster1
-```
-
-* Login to the cluster2 and configure them into the kubeconfig:
-
-```
-kubectl login --insecure-skip-tls-verify=true --username=<admin_user> --password=<admin_password> https://api.<hub_cluster_name>.<base_domain>:6443
-
-kubectl config rename-context $(kubectl config current-context) cluster2
-```
-
-* Change between both contexts to check if it's working:
-
-```
-kubectl config use-context cluster1
-
-kubectl config use-context cluster2
-```
-
-* Add the first cluster in the argocd server:
-
-```
-argocd cluster add cluster1
-```
-
-* Add the second cluster in the argocd server:
-
-```
-argocd cluster add cluster2
-```
-
-* Check the existing argocd clusters available:
+* Check the existing ArgoCD Managed clusters available:
 
 ```
 argocd cluster list

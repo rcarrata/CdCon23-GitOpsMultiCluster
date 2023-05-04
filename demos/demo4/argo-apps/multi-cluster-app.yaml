@@ -10,7 +10,7 @@ spec:
     metadata:
       name: "{{name}}-welcome-app"
     spec:
-      project: welcome-app
+      project: apps-project
       syncPolicy:
         automated:
           prune: true
