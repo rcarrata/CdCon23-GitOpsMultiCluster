@@ -1,0 +1,11 @@
+kind: Deployment
+metadata:
+  name: welcome-app
+spec:
+  template:
+    spec:
+      containers:
+        - name: welcome-app
+          env:
+            - name: REGION
+              value: "eu"

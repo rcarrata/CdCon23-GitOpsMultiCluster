@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: welcome-app
+spec:
+  template:
+    spec:
+      containers:
+        - name: welcome-app
+          image: quay.io/rcarrata/welcome-app:2.0

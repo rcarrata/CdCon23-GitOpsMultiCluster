@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: welcome-app
+spec:
+  template:
+    spec:
+      containers:
+        - name: welcome-app
+          env:
+            - name: ENV
+              value: "load-gpu"
+            - name: GPU_ENABLED
+              value: "1"
