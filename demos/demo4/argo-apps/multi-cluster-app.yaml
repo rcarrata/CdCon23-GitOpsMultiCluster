@@ -18,7 +18,7 @@ spec:
       source:
         repoURL: https://github.com/rcarrata/CdCon23-GitOpsMultiCluster.git
         targetRevision: main
-        path: demos/apps/demo4/base/
+        path: apps/demo4/base/
       destination:
         server: "{{server}}"
         namespace: welcome-app
