@@ -1,4 +1,5 @@
-# Demo 3 - Managing GitOps Apps at scale
+
+# Demo 3 - Managing GitOps Apps at scale
 
 Deploy Dev, Staging and Prod environments using ApplicationSets in the same collocated Kubernetes cluster (where the ArgoCD instance is deployed).  
 
