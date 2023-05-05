@@ -21,7 +21,7 @@ spec:
       source:
         repoURL: https://github.com/rcarrata/CdCon23-GitOpsMultiCluster.git
         targetRevision: main
-        path: apps/demo5/prod-env/overlays
+        path: apps/demo5/staging-env/overlays
       destination:
         server: "{{server}}"
         namespace: welcome-app
