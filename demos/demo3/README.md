@@ -6,7 +6,7 @@ Deploy Dev, Staging and Prod environments using ApplicationSets in the same coll
 ## Deploy Dev + Staging + Prod Environments
 
 ```
-cd ~/CdCon23-GitOpsMultiCluster/demos/demo1/
+cd ~/CdCon23-GitOpsMultiCluster/demos/demo3/
 kubectl apply -k deploy/
 ```
 
