@@ -19,6 +19,10 @@ After this technical session you will know more about the challenges and the ben
 * [Demo 5 - GitOps Multi Cluster & Multi-Environment Strategies](./demos/demo5/README.md)
 * [Demo 6 - Promotion between GitOps environments](./demos/demo6/README.md)
 
+## Slides
+
+* [Slides - CdCon & GitOpsCon - Managing GitOps deployments in multi-cluster production environments](./docs/slides.pdf)
+
 ## Audience
 
 For anyone interested in DevOps, SRE, application platform management, and anyone who manages complex Kubernetes environments at scale.
