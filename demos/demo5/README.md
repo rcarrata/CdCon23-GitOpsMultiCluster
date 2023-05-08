@@ -42,6 +42,7 @@ https://kubernetes.default.svc                             in-cluster  1.20     
 ## Deploy Applications in Multi Cluster Environment
 
 ```
+cd ~/CdCon23-GitOpsMultiCluster/demos/demo5/
 kubectl apply -k deploy
 ```
 

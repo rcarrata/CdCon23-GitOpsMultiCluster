@@ -9,6 +9,7 @@ This demo will deploy the TODO app in a remote cluster (cluster1), showing how y
 ## Deploy TODO app
 
 ```
+cd ~/CdCon23-GitOpsMultiCluster/demos/demo2/
 kubectl apply -f todo-application.yaml
 ```
 

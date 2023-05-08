@@ -3,6 +3,7 @@
 * Deploy a Kustomized Application using ArgoCD Application:
 
 ```
+cd ~/CdCon23-GitOpsMultiCluster/demos/demo1/
 kubectl apply -f bgdk-app.yaml
 ```
 
